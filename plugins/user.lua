@@ -9,4 +9,8 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  {
+    "scebai/glacier.vim",
+    name = "glacier",
+  }
 }
