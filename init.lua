@@ -18,7 +18,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "glacier",
+  colorscheme = "astrotheme",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -70,17 +70,17 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "gitcommit", "markdown", "text", "plaintext" },
+      group = vim.api.nvim_create_augroup("auto_spell", { clear = true }),
+      callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+        vim.opt.spelllang = "de_de"
+        vim.api.nvim_set_hl(
+          0, 'SpellBad', { fg = "red", underline = true }
+        )
+      end,
+    })
   end,
 }
