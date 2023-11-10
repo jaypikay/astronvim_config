@@ -32,6 +32,16 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    -- ["<leader>le"] = { name = "LTeX" },
+    ["<leader>ll"] = { name = "LTeX LSP" },
+    ["<leader>lle"] = { function()
+      require('user.lsp.config.ltex').settings.ltex.language = "en-US";
+      vim.cmd("LspRestart");
+    end, desc = "Switch LTeX to English (en-US)" },
+    ["<leader>lld"] = { function()
+      require('user.lsp.config.ltex').settings.ltex.language = "de-DE";
+      vim.cmd("LspRestart");
+    end, desc = "Switch LTeX to German (de-DE)" }
   },
   t = {
     -- setting a mapping to false will disable it
