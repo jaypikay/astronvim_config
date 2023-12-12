@@ -12,5 +12,5 @@ return {
   {
     "scebai/glacier.vim",
     name = "glacier",
-  }
+  },
 }
